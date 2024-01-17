@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Sphere Viewer</title>
+
+    <!-- CSS Import -->
+    <style>
+        @import 'https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5/index.css';
+
+        /* html, body, #viewer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: sans-serif;
+        } */
+    </style>
+</head>
+<body>
+
+    <iframe src="https://clcgisc.maps.arcgis.com/apps/webappviewer/index.html?id=a2d21e5e55644648a8c34d27fd337b6e"
+            width="800" height="600"
+            frameborder="0" style="border:0;"
+            allowfullscreen="" aria-hidden="false" tabindex="0">
+    </iframe>
+
+    <div id="viewer"></div>
+
+    <!-- Import Map for JavaScript Modules -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+                "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5/index.module.js"
+            }
+        }
+    </script>
+
+    <!-- JavaScript to Initialize Photo Sphere Viewer -->
+    <script type="module">
+        import { Viewer } from '@photo-sphere-viewer/core';
+
+        const baseUrl = 'https://photo-sphere-viewer-data.netlify.app/assets/';
+        const page = 'https://bgymn.github.io/test_Pano/';
+
+        const viewer = new Viewer({
+            container: 'viewer',
+            panorama: page + 'docs/assets/Goodman_LiftStation_20230405.jpg',
+            caption: 'this is a test <b>&copy; BOPU GIS</b>',
+            loadingImg: baseUrl + 'loader.gif',
+            touchmoveTwoFingers: true,
+            mousewheelCtrlKey: true,
+        });
+    </script>
+</body>
+</html>
