@@ -33,12 +33,23 @@
     <!-- Your JavaScript to initialize the viewer -->
     <script type="module">
         import { Viewer } from '@photo-sphere-viewer/core';
-        
-        const viewer = new Viewer({
-            container: document.getElementById('viewer'),
-            panorama: 'https://bgymn.github.io/test_Pano/docs/assets/Goodman_LiftStation_20230405.jpg'
-            // additional options...
+    
+        const baseURL = 'https://bgymn.github.io/test_Pano/docs/assets/';
+        let viewer;
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            viewer = new Viewer({
+                container: document.getElementById('viewer'),
+                panorama: baseURL + 'default_image.jpg' // Default image
+                // additional options...
+            });
         });
+    
+        function updateViewer(imageId) {
+            const newPanoramaURL = baseURL + imageId + '.jpg';
+            viewer.setPanorama(newPanoramaURL);
+        }
     </script>
+
 </body>
 </html>
